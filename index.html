@@ -1,850 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>YASH. — Developer • AI Builder</title>
-  <meta
-    name="description"
-    content="YASH. — Developer, AI Builder and Problem Solver."
-  />
+  <title>YASH. — Developer</title>
 
-  <!-- THREE.JS -->
   <script type="importmap">
-    {
-      "imports": {
-        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
-      }
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
     }
+  }
   </script>
 
-  <!-- YOUR CSS -->
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- =========================
-       3D BACKGROUND
-  ========================== -->
-
   <canvas id="three-canvas"></canvas>
 
-
-  <!-- =========================
-       NAVIGATION
-  ========================== -->
-
   <nav>
-
-    <div class="logo">
-      YASH<span class="red">.</span>
-    </div>
+    <div class="logo">YASH<span>.</span></div>
 
     <div class="nav-links">
       <a href="#about">ABOUT</a>
       <a href="#skills">SKILLS</a>
       <a href="#projects">PROJECTS</a>
-      <a href="#ai-lab">AI LAB</a>
-      <a href="#journey">JOURNEY</a>
       <a href="#contact">CONTACT</a>
     </div>
-
   </nav>
 
+  <main>
 
-  <!-- =========================
-       HERO
-  ========================== -->
+    <section class="hero">
 
-  <section class="hero" id="home">
+      <div class="hero-text">
+        <div class="eyebrow">
+          DEVELOPER • AI BUILDER • PROBLEM SOLVER
+        </div>
 
-    <div class="hero-content">
+        <h1>YASH<span>.</span></h1>
 
-      <div class="small">
-        DEVELOPER • AI BUILDER • PROBLEM SOLVER
+        <p>
+          I build digital systems where software,
+          AI and automation meet.
+        </p>
+
+        <div class="buttons">
+          <a href="#projects">VIEW MY WORK →</a>
+          <a href="#about">ABOUT ME</a>
+        </div>
       </div>
 
-      <h1>
-        YASH<span class="red">.</span>
-      </h1>
+    </section>
 
+    <section id="about">
+      <div class="label">01 / ABOUT</div>
+      <h2>A STUDENT<br>WHO <span>BUILDS.</span></h2>
       <p>
-        I build digital systems where
-        software, AI and automation meet.
+        Developer focused on C++, DSA, web development,
+        AI integration and real-world digital products.
       </p>
+    </section>
 
-      <div class="hero-buttons">
+    <section id="skills">
+      <div class="label">02 / SKILLS</div>
+      <h2>TOOLS I USE<br>TO <span>BUILD.</span></h2>
 
-        <a href="#projects" class="button">
-          VIEW MY WORK →
-        </a>
-
-        <a href="#about" class="button outline">
-          ABOUT ME
-        </a>
-
+      <div class="skills">
+        <b>C++</b>
+        <b>DSA</b>
+        <b>JavaScript</b>
+        <b>AI APIs</b>
+        <b>Voice AI</b>
+        <b>VAPI</b>
+        <b>Twilio</b>
+        <b>Git / GitHub</b>
+        <b>Vercel</b>
+        <b>Automation</b>
       </div>
-
-    </div>
-
-    <!-- 3D scene focal object -->
-    <div class="orb"></div>
-
-  </section>
-
-
-  <!-- =========================
-       ABOUT
-  ========================== -->
-
-  <section id="about">
-
-    <div class="section-number">
-      01 / ABOUT
-    </div>
-
-    <h2>
-      A STUDENT<br>
-      WHO <span class="red">BUILDS.</span>
-    </h2>
-
-    <p class="section-text">
-      I'm Yash, a developer and problem solver focused on
-      learning software development, AI and automation while
-      building real-world digital projects.
-    </p>
-
-  </section>
-
-
-  <!-- =========================
-       SKILLS
-  ========================== -->
-
-  <section id="skills">
-
-    <div class="section-number">
-      02 / SKILLS
-    </div>
-
-    <h2>
-      TOOLS I USE<br>
-      TO <span class="red">BUILD.</span>
-    </h2>
-
-    <div class="skills">
-
-      <div class="skill">C++</div>
-      <div class="skill">DSA</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">AI APIs</div>
-      <div class="skill">Voice AI</div>
-      <div class="skill">VAPI</div>
-      <div class="skill">Twilio</div>
-      <div class="skill">REST APIs</div>
-      <div class="skill">Git / GitHub</div>
-      <div class="skill">Vercel</div>
-      <div class="skill">Automation</div>
-      <div class="skill">Web Development</div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       PROJECTS
-  ========================== -->
-
-  <section id="projects">
-
-    <div class="section-number">
-      03 / SELECTED WORK
-    </div>
-
-    <h2>
-      PROJECTS<br>
-      THAT <span class="red">MATTER.</span>
-    </h2>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        01
-      </div>
-
-      <div>
-        <h3>TARGETLEADS</h3>
-
-        <p>
-          B2B lead-generation platform focused on
-          clothing businesses, retailer data and
-          automation workflows.
-        </p>
-      </div>
-
-    </div>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        02
-      </div>
-
-      <div>
-        <h3>MUMMY CAFE</h3>
-
-        <p>
-          Smart restaurant digital experience concept
-          combining QR menu, ordering, booking and
-          AI / voice-assistant ideas.
-        </p>
-      </div>
-
-    </div>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        03
-      </div>
-
-      <div>
-        <h3>NUMBER REFINE</h3>
-
-        <p>
-          Raw Numbers → Cleaning → Validation →
-          Filtering → Refinement → Final Usable Data.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       AI LAB
-  ========================== -->
-
-  <section id="ai-lab">
-
-    <div class="section-number">
-      04 / AI LAB
-    </div>
-
-    <h2>
-      BUILDING WITH<br>
-      <span class="red">AI.</span>
-    </h2>
-
-    <p class="section-text">
-      Exploring AI APIs, voice agents, automation,
-      assistants and practical AI-powered products.
-    </p>
-
-    <div class="learning-path">
-
-      <span>AI APIs</span>
-      <span>Gemini</span>
-      <span>Voice AI</span>
-      <span>VAPI</span>
-      <span>Twilio</span>
-      <span>Automation</span>
-      <span>REST APIs</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       JOURNEY
-  ========================== -->
-
-  <section id="journey">
-
-    <div class="section-number">
-      05 / JOURNEY
-    </div>
-
-    <h2>
-      THE<br>
-      <span class="red">PATH.</span>
-    </h2>
-
-    <div class="learning-path">
-
-      <span>C++</span>
-      <span>DSA</span>
-      <span>Git / GitHub</span>
-      <span>SQL</span>
-      <span>Backend</span>
-      <span>Node.js</span>
-      <span>TypeScript</span>
-      <span>PostgreSQL</span>
-      <span>Docker</span>
-      <span>Cloud</span>
-      <span>System Design</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       CONTACT
-  ========================== -->
-
-  <section id="contact">
-
-    <div class="section-number">
-      06 / LET'S TALK
-    </div>
-
-    <h2>
-      LET'S<br>
-      <span class="red">BUILD.</span>
-    </h2>
-
-    <p class="section-text">
-      Building, learning and experimenting with
-      software, AI and digital products.
-    </p>
-
-    <div class="hero-buttons">
-
-      <a
-        href="mailto:your-email@example.com"
-        class="button"
-      >
-        EMAIL ME →
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       FOOTER
-  ========================== -->
+    </section>
+
+    <section id="projects">
+      <div class="label">03 / SELECTED WORK</div>
+      <h2>PROJECTS<br>THAT <span>MATTER.</span></h2>
+
+      <article>
+        <strong>01 — TARGETLEADS</strong>
+        <p>B2B lead-generation and data refinement platform.</p>
+      </article>
+
+      <article>
+        <strong>02 — MUMMY CAFE</strong>
+        <p>Smart restaurant digital experience with AI concepts.</p>
+      </article>
+
+      <article>
+        <strong>03 — NUMBER REFINE</strong>
+        <p>Data cleaning, validation and refinement workflow.</p>
+      </article>
+    </section>
+
+    <section id="contact">
+      <div class="label">04 / CONTACT</div>
+      <h2>LET'S<br><span>BUILD.</span></h2>
+    </section>
+
+  </main>
 
   <footer>
-
-    <div>
-      YASH<span class="red">.</span>
-    </div>
-
-    <div>
-      BUILD • LEARN • EXECUTE • REPEAT
-    </div>
-
+    YASH. — BUILD • LEARN • EXECUTE • REPEAT
   </footer>
-
-
-  <!-- =========================
-       YOUR JAVASCRIPT
-  ========================== -->
-
-  <script type="module" src="script.js"></script>
-
-</body>
-          </html>
-  <!-- ================= 3D BACKGROUND ================= -->
-
-  <canvas id="three-canvas"></canvas>
-
-
-  <!-- ================= HERO ================= -->
-
-  <section class="hero">
-
-    <div class="hero-content">
-
-      <div class="small">
-        DEVELOPER • AI BUILDER
-      </div>
-
-      <h1>
-        YASH<span class="red">.</span>
-      </h1>
-
-      <p>
-        I build software, AI systems, automation
-        and futuristic digital experiences.
-      </p>
-
-      <div class="hero-buttons">
-        <a href="#projects" class="button">
-          VIEW PROJECTS
-        </a>
-
-        <a href="#contact" class="button outline">
-          CONTACT
-        </a>
-      </div>
-
-    </div>
-
-    <!-- Temporary 3D focal object -->
-    <div class="orb"></div>
-
-  </section>
-
-
-  <!-- ================= ABOUT ================= -->
-
-  <section id="about">
-
-    <div class="section-number">
-      01 / ABOUT
-    </div>
-
-    <h2>
-      BUILD.<br>
-      <span class="red">LEARN.</span><br>
-      REPEAT.
-    </h2>
-
-    <p class="section-text">
-      Developer focused on C++, DSA, modern web development,
-      AI integration and building real-world digital products.
-    </p>
-
-  </section>
-
-
-  <!-- ================= SKILLS ================= -->
-
-  <section id="skills">
-
-    <div class="section-number">
-      02 / SKILLS
-    </div>
-
-    <h2>
-      WHAT I<br>
-      <span class="red">BUILD.</span>
-    </h2>
-
-    <div class="skills">
-
-      <div class="skill">C++</div>
-      <div class="skill">DSA</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">AI APIs</div>
-      <div class="skill">Voice AI</div>
-      <div class="skill">VAPI</div>
-      <div class="skill">Twilio</div>
-      <div class="skill">REST APIs</div>
-      <div class="skill">Git / GitHub</div>
-      <div class="skill">Vercel</div>
-      <div class="skill">Automation</div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= PROJECTS ================= -->
-
-  <section id="projects">
-
-    <div class="section-number">
-      03 / PROJECTS
-    </div>
-
-    <h2>
-      SELECTED<br>
-      <span class="red">WORK.</span>
-    </h2>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        01
-      </div>
-
-      <div>
-        <h3>TargetLeads</h3>
-
-        <p>
-          B2B lead-generation platform for clothing
-          businesses, data refinement and automation.
-        </p>
-      </div>
-
-    </div>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        02
-      </div>
-
-      <div>
-        <h3>MUMMY CAFE</h3>
-
-        <p>
-          Smart restaurant digital menu concept with
-          QR, AI and voice-assistant experiences.
-        </p>
-      </div>
-
-    </div>
-
-
-    <div class="project-card">
-
-      <div class="project-number">
-        03
-      </div>
-
-      <div>
-        <h3>NUMBER REFINE</h3>
-
-        <p>
-          Raw Numbers → Cleaning → Validation →
-          Filtering → Refinement → Usable Data.
-        </p>
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= LEARNING ================= -->
-
-  <section id="learning">
-
-    <div class="section-number">
-      04 / CURRENT PATH
-    </div>
-
-    <h2>
-      THE<br>
-      <span class="red">ROAD.</span>
-    </h2>
-
-    <div class="learning-path">
-
-      <span>C++</span>
-      <span>DSA</span>
-      <span>Git / GitHub</span>
-      <span>SQL</span>
-      <span>Backend</span>
-      <span>Node.js</span>
-      <span>TypeScript</span>
-      <span>PostgreSQL</span>
-      <span>Docker</span>
-      <span>Cloud</span>
-      <span>System Design</span>
-
-    </div>
-
-  </section>
-
-
-  <!-- ================= CONTACT ================= -->
-
-  <section id="contact">
-
-    <div class="section-number">
-      05 / CONTACT
-    </div>
-
-    <h2>
-      LET'S<br>
-      <span class="red">BUILD.</span>
-    </h2>
-
-    <p class="section-text">
-      Open to building interesting software,
-      AI systems and digital products.
-    </p>
-
-  </section>
-
-
-  <!-- ================= FOOTER ================= -->
-
-  <footer>
-
-    <div>
-      YASH.
-    </div>
-
-    <div>
-      DEVELOPER • AI BUILDER • PROBLEM SOLVER
-    </div>
-
-  </footer>
-
-
-  <!-- ================= JAVASCRIPT ================= -->
 
   <script type="module" src="script.js"></script>
 
 </body>
 </html>
-    .logo {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 3px;
-    }
-
-    nav a {
-      color: #aaa;
-      text-decoration: none;
-      margin-left: 20px;
-      font-size: 13px;
-    }
-
-    nav a:hover {
-      color: #ff3030;
-    }
-
-    section {
-      min-height: 100vh;
-      padding: 120px 7%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at 75% 45%, rgba(255,0,0,.18), transparent 25%),
-        radial-gradient(circle at 20% 80%, rgba(120,0,0,.15), transparent 25%),
-        #050505;
-    }
-
-    .small {
-      color: #ff3030;
-      letter-spacing: 4px;
-      font-size: 12px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(70px, 14vw, 180px);
-      line-height: .8;
-      letter-spacing: -7px;
-    }
-
-    h2 {
-      font-size: clamp(45px, 8vw, 100px);
-      margin-bottom: 30px;
-    }
-
-    .hero p {
-      margin-top: 35px;
-      color: #aaa;
-      max-width: 600px;
-      line-height: 1.7;
-    }
-
-    .red {
-      color: #ff3030;
-    }
-
-    .orb {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      right: 10%;
-      top: 35%;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 30%, #ff5555, #620000 45%, #090000 70%);
-      box-shadow:
-        0 0 40px #ff0000,
-        0 0 120px rgba(255,0,0,.4);
-      animation: float 4s ease-in-out infinite;
-    }
-
-    @keyframes float {
-      0%,100% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-25px) rotate(8deg); }
-    }
-
-    .card {
-      border: 1px solid #292929;
-      background: rgba(20,20,20,.65);
-      padding: 30px;
-      margin: 12px 0;
-      max-width: 800px;
-      transition: .3s;
-    }
-
-    .card:hover {
-      border-color: #ff3030;
-      transform: translateX(10px);
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: #999;
-      line-height: 1.6;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      max-width: 800px;
-    }
-
-    .skill {
-      padding: 12px 18px;
-      border: 1px solid #333;
-      color: #ccc;
-      background: #101010;
-    }
-
-    footer {
-      padding: 50px 7%;
-      border-top: 1px solid #222;
-      color: #666;
-    }
-
-    @media (max-width: 700px) {
-      nav a {
-        display: none;
-      }
-
-      .orb {
-        width: 150px;
-        height: 150px;
-        right: 8%;
-        top: 25%;
-        opacity: .7;
-      }
-
-      h1 {
-        font-size: 75px;
-      }
-
-      section {
-        padding: 110px 6%;
-      }
-    }
-  </style>
-</head>
-
-<body>
-
-  <nav>
-    <div class="logo">YASH.</div>
-
-    <div>
-      <a href="#about">ABOUT</a>
-      <a href="#skills">SKILLS</a>
-      <a href="#projects">PROJECTS</a>
-      <a href="#contact">CONTACT</a>
-    </div>
-  </nav>
-
-  <section class="hero">
-    <div class="small">DEVELOPER • AI BUILDER</div>
-
-    <h1>YASH<span class="red">.</span></h1>
-
-    <p>
-      I build software, AI systems, automation and futuristic digital
-      experiences.
-    </p>
-
-    <div class="orb"></div>
-  </section>
-
-  <section id="about">
-    <div class="small">01 / ABOUT</div>
-
-    <h2>BUILD.<br><span class="red">LEARN.</span><br>REPEAT.</h2>
-
-    <p style="max-width:700px;color:#999;line-height:1.8;">
-      Developer focused on learning C++, DSA, web development,
-      AI integration and building real-world projects.
-    </p>
-  </section>
-
-  <section id="skills">
-    <div class="small">02 / SKILLS</div>
-
-    <h2>WHAT I<br><span class="red">BUILD</span></h2>
-
-    <div class="skills">
-      <div class="skill">C++</div>
-      <div class="skill">DSA</div>
-      <div class="skill">JavaScript</div>
-      <div class="skill">AI APIs</div>
-      <div class="skill">Voice AI</div>
-      <div class="skill">VAPI</div>
-      <div class="skill">Twilio</div>
-      <div class="skill">REST APIs</div>
-      <div class="skill">Git / GitHub</div>
-      <div class="skill">Vercel</div>
-      <div class="skill">Automation</div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="small">03 / PROJECTS</div>
-
-    <h2>SELECTED<br><span class="red">WORK</span></h2>
-
-    <div class="card">
-      <h3>01 — TargetLeads</h3>
-      <p>
-        B2B lead-generation platform focused on clothing retailers,
-        data refinement and automation.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>02 — MUMMY CAFE</h3>
-      <p>
-        Smart restaurant digital menu concept with QR,
-        AI and voice-assistant experiences.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>03 — Number Refine</h3>
-      <p>
-        Raw numbers → Cleaning → Validation → Filtering →
-        Refinement → Usable data.
-      </p>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="small">04 / CONTACT</div>
-
-    <h2>LET'S<br><span class="red">BUILD.</span></h2>
-
-    <p style="color:#999;line-height:1.8;">
-      More projects and experiments coming soon.
-    </p>
-  </section>
-
-  <footer>
-    YASH. — Developer • AI Builder • Problem Solver
-  </footer>
-
-</body>
-  </html>
