@@ -1,40 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>YASH — Developer</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+  <!-- Three.js -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
     }
+  }
+  </script>
 
-    html {
-      scroll-behavior: smooth;
-    }
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    body {
-      background: #050505;
-      color: white;
-      font-family: Arial, sans-serif;
-      overflow-x: hidden;
-    }
+<body>
 
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      padding: 22px 6%;
-      display: flex;
-      justify-content: space-between;
-      z-index: 10;
-      background: rgba(0,0,0,.35);
-      backdrop-filter: blur(10px);
-    }
+  <!-- ================= NAVIGATION ================= -->
 
+  <nav>
+    <div class="logo">YASH.</div>
+
+    <div class="nav-links">
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+
+  <!-- ================= 3D BACKGROUND ================= -->
+
+  <canvas id="three-canvas"></canvas>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <div class="small">
+        DEVELOPER • AI BUILDER
+      </div>
+
+      <h1>
+        YASH<span class="red">.</span>
+      </h1>
+
+      <p>
+        I build software, AI systems, automation
+        and futuristic digital experiences.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#projects" class="button">
+          VIEW PROJECTS
+        </a>
+
+        <a href="#contact" class="button outline">
+          CONTACT
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Temporary 3D focal object -->
+    <div class="orb"></div>
+
+  </section>
+
+
+  <!-- ================= ABOUT ================= -->
+
+  <section id="about">
+
+    <div class="section-number">
+      01 / ABOUT
+    </div>
+
+    <h2>
+      BUILD.<br>
+      <span class="red">LEARN.</span><br>
+      REPEAT.
+    </h2>
+
+    <p class="section-text">
+      Developer focused on C++, DSA, modern web development,
+      AI integration and building real-world digital products.
+    </p>
+
+  </section>
+
+
+  <!-- ================= SKILLS ================= -->
+
+  <section id="skills">
+
+    <div class="section-number">
+      02 / SKILLS
+    </div>
+
+    <h2>
+      WHAT I<br>
+      <span class="red">BUILD.</span>
+    </h2>
+
+    <div class="skills">
+
+      <div class="skill">C++</div>
+      <div class="skill">DSA</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">AI APIs</div>
+      <div class="skill">Voice AI</div>
+      <div class="skill">VAPI</div>
+      <div class="skill">Twilio</div>
+      <div class="skill">REST APIs</div>
+      <div class="skill">Git / GitHub</div>
+      <div class="skill">Vercel</div>
+      <div class="skill">Automation</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= PROJECTS ================= -->
+
+  <section id="projects">
+
+    <div class="section-number">
+      03 / PROJECTS
+    </div>
+
+    <h2>
+      SELECTED<br>
+      <span class="red">WORK.</span>
+    </h2>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        01
+      </div>
+
+      <div>
+        <h3>TargetLeads</h3>
+
+        <p>
+          B2B lead-generation platform for clothing
+          businesses, data refinement and automation.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        02
+      </div>
+
+      <div>
+        <h3>MUMMY CAFE</h3>
+
+        <p>
+          Smart restaurant digital menu concept with
+          QR, AI and voice-assistant experiences.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        03
+      </div>
+
+      <div>
+        <h3>NUMBER REFINE</h3>
+
+        <p>
+          Raw Numbers → Cleaning → Validation →
+          Filtering → Refinement → Usable Data.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= LEARNING ================= -->
+
+  <section id="learning">
+
+    <div class="section-number">
+      04 / CURRENT PATH
+    </div>
+
+    <h2>
+      THE<br>
+      <span class="red">ROAD.</span>
+    </h2>
+
+    <div class="learning-path">
+
+      <span>C++</span>
+      <span>DSA</span>
+      <span>Git / GitHub</span>
+      <span>SQL</span>
+      <span>Backend</span>
+      <span>Node.js</span>
+      <span>TypeScript</span>
+      <span>PostgreSQL</span>
+      <span>Docker</span>
+      <span>Cloud</span>
+      <span>System Design</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- ================= CONTACT ================= -->
+
+  <section id="contact">
+
+    <div class="section-number">
+      05 / CONTACT
+    </div>
+
+    <h2>
+      LET'S<br>
+      <span class="red">BUILD.</span>
+    </h2>
+
+    <p class="section-text">
+      Open to building interesting software,
+      AI systems and digital products.
+    </p>
+
+  </section>
+
+
+  <!-- ================= FOOTER ================= -->
+
+  <footer>
+
+    <div>
+      YASH.
+    </div>
+
+    <div>
+      DEVELOPER • AI BUILDER • PROBLEM SOLVER
+    </div>
+
+  </footer>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script type="module" src="script.js"></script>
+
+</body>
+</html>
     .logo {
       font-size: 22px;
       font-weight: 800;
