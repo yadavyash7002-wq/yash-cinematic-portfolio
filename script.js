@@ -1,23 +1,22 @@
 import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 
 /* =========================
-   BASIC SETUP
+   SCENE
 ========================= */
 
 const canvas = document.getElementById("three-canvas");
 
 const scene = new THREE.Scene();
 
-scene.background = new THREE.Color(0x030303);
-
 const camera = new THREE.PerspectiveCamera(
-  60,
+  55,
   window.innerWidth / window.innerHeight,
   0.1,
   100
 );
 
-camera.position.set(0, 1.5, 8);
+camera.position.set(0, 1.8, 7);
 
 const renderer = new THREE.WebGLRenderer({
   canvas,
@@ -26,15 +25,316 @@ const renderer = new THREE.WebGLRenderer({
 });
 
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(
-  Math.min(window.devicePixelRatio, 2)
-);
-
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.shadowMap.enabled = true;
 
 /* =========================
-   LIGHTS
+   LIGHTING
 ========================= */
+
+scene.add(
+  new THREE.AmbientLight(0xffffff, 0.45)
+);
+
+const redLight = new THREE.PointLight(
+  0xff2020,
+  30,
+  18
+);
+
+redLight.position.set(3, 4, 3);
+scene.add(redLight);
+
+const redBackLight = new THREE.PointLight(
+  0x550000,
+  20,
+  15
+);
+
+redBackLight.position.set(-4, 2, -4);
+scene.add(redBackLight);
+
+/* =========================
+   FLOOR
+========================= */
+
+const floor = new THREE.Mesh(
+  new THREE.PlaneGeometry(30, 30),
+  new THREE.MeshStandardMaterial({
+    color: 0x050505,
+    metalness: 0.8,
+    roughness: 0.35
+  })
+);
+
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -1.55;
+floor.receiveShadow = true;
+
+scene.add(floor);
+
+/* =========================
+   RED RING
+========================= */
+
+const ring = new THREE.Mesh(
+  new THREE.TorusGeometry(2.5, 0.025, 16, 100),
+  new THREE.MeshBasicMaterial({
+    color: 0xff2020
+  })
+);
+
+ring.position.set(1.7, 3.2, -2.5);
+ring.rotation.x = Math.PI / 2;
+
+scene.add(ring);
+
+/* =========================
+   PARTICLES
+========================= */
+
+const count = 1000;
+
+const positions = new Float32Array(count * 3);
+
+for (let i = 0; i < count * 3; i += 3) {
+  positions[i] = (Math.random() - 0.5) * 24;
+  positions[i + 1] = (Math.random() - 0.5) * 14;
+  positions[i + 2] = (Math.random() - 0.5) * 18;
+}
+
+const particleGeometry = new THREE.BufferGeometry();
+
+particleGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(positions, 3)
+);
+
+const particleMaterial = new THREE.PointsMaterial({
+  color: 0xff3333,
+  size: 0.025,
+  transparent: true,
+  opacity: 0.7
+});
+
+const particles = new THREE.Points(
+  particleGeometry,
+  particleMaterial
+);
+
+scene.add(particles);
+
+/* =========================
+   CHARACTER
+========================= */
+
+let character = null;
+let mixer = null;
+let clock = new THREE.Clock();
+
+const loader = new GLTFLoader();
+
+loader.load(
+  "https://threejs.org/examples/models/gltf/Soldier.glb",
+
+  (gltf) => {
+
+    character = gltf.scene;
+
+    character.scale.set(
+      1.8,
+      1.8,
+      1.8
+    );
+
+    character.position.set(
+      1.0,
+      -1.55,
+      0
+    );
+
+    character.rotation.y = Math.PI;
+
+    character.traverse((object) => {
+
+      if (object.isMesh) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+      }
+
+    });
+
+    scene.add(character);
+
+    /* Animation system */
+
+    if (gltf.animations.length) {
+
+      mixer = new THREE.AnimationMixer(character);
+
+      const idle = THREE.AnimationClip.findByName(
+        gltf.animations,
+        "Idle"
+      );
+
+      const walk = THREE.AnimationClip.findByName(
+        gltf.animations,
+        "Walk"
+      );
+
+      const run = THREE.AnimationClip.findByName(
+        gltf.animations,
+        "Run"
+      );
+
+      if (walk) {
+        mixer
+          .clipAction(walk)
+          .play();
+      } else {
+        mixer
+          .clipAction(gltf.animations[0])
+          .play();
+      }
+
+    }
+
+  },
+
+  undefined,
+
+  (error) => {
+    console.error(
+      "Character loading failed:",
+      error
+    );
+  }
+);
+
+/* =========================
+   MOUSE
+========================= */
+
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener(
+  "mousemove",
+  (event) => {
+
+    mouseX =
+      (event.clientX / window.innerWidth) - 0.5;
+
+    mouseY =
+      (event.clientY / window.innerHeight) - 0.5;
+
+  }
+);
+
+/* =========================
+   SCROLL
+========================= */
+
+let scrollProgress = 0;
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    scrollProgress =
+      window.scrollY /
+      window.innerHeight;
+
+  }
+);
+
+/* =========================
+   ANIMATION LOOP
+========================= */
+
+function animate() {
+
+  requestAnimationFrame(animate);
+
+  const delta = clock.getDelta();
+  const time = clock.getElapsedTime();
+
+  if (mixer) {
+    mixer.update(delta);
+  }
+
+  if (character) {
+
+    /* subtle breathing / movement */
+
+    character.position.y =
+      -1.55 +
+      Math.sin(time * 2) * 0.01;
+
+    /* mouse interaction */
+
+    character.rotation.y =
+      Math.PI +
+      mouseX * 0.25;
+
+    /* scroll movement */
+
+    character.position.x =
+      1 -
+      scrollProgress * 0.8;
+
+  }
+
+  ring.rotation.z =
+    time * 0.3;
+
+  particles.rotation.y =
+    time * 0.012;
+
+  /* cinematic camera */
+
+  camera.position.x +=
+    (mouseX * 0.6 -
+      camera.position.x) * 0.025;
+
+  camera.position.y +=
+    (1.8 -
+      mouseY * 0.35 -
+      camera.position.y) * 0.025;
+
+  camera.position.z =
+    7 -
+    scrollProgress * 1.3;
+
+  renderer.render(
+    scene,
+    camera
+  );
+}
+
+animate();
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    camera.aspect =
+      window.innerWidth /
+      window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+      window.innerWidth,
+      window.innerHeight
+    );
+
+  }
+);========================= */
 
 const ambientLight = new THREE.AmbientLight(
   0xffffff,
