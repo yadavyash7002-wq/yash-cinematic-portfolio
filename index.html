@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YASH — Developer</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 22px 6%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 10;
+      background: rgba(0,0,0,.35);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 13px;
+    }
+
+    nav a:hover {
+      color: #ff3030;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 120px 7%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    .hero {
+      background:
+        radial-gradient(circle at 75% 45%, rgba(255,0,0,.18), transparent 25%),
+        radial-gradient(circle at 20% 80%, rgba(120,0,0,.15), transparent 25%),
+        #050505;
+    }
+
+    .small {
+      color: #ff3030;
+      letter-spacing: 4px;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(70px, 14vw, 180px);
+      line-height: .8;
+      letter-spacing: -7px;
+    }
+
+    h2 {
+      font-size: clamp(45px, 8vw, 100px);
+      margin-bottom: 30px;
+    }
+
+    .hero p {
+      margin-top: 35px;
+      color: #aaa;
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    .red {
+      color: #ff3030;
+    }
+
+    .orb {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: 10%;
+      top: 35%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #ff5555, #620000 45%, #090000 70%);
+      box-shadow:
+        0 0 40px #ff0000,
+        0 0 120px rgba(255,0,0,.4);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-25px) rotate(8deg); }
+    }
+
+    .card {
+      border: 1px solid #292929;
+      background: rgba(20,20,20,.65);
+      padding: 30px;
+      margin: 12px 0;
+      max-width: 800px;
+      transition: .3s;
+    }
+
+    .card:hover {
+      border-color: #ff3030;
+      transform: translateX(10px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: #999;
+      line-height: 1.6;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 800px;
+    }
+
+    .skill {
+      padding: 12px 18px;
+      border: 1px solid #333;
+      color: #ccc;
+      background: #101010;
+    }
+
+    footer {
+      padding: 50px 7%;
+      border-top: 1px solid #222;
+      color: #666;
+    }
+
+    @media (max-width: 700px) {
+      nav a {
+        display: none;
+      }
+
+      .orb {
+        width: 150px;
+        height: 150px;
+        right: 8%;
+        top: 25%;
+        opacity: .7;
+      }
+
+      h1 {
+        font-size: 75px;
+      }
+
+      section {
+        padding: 110px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="logo">YASH.</div>
+
+    <div>
+      <a href="#about">ABOUT</a>
+      <a href="#skills">SKILLS</a>
+      <a href="#projects">PROJECTS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="small">DEVELOPER • AI BUILDER</div>
+
+    <h1>YASH<span class="red">.</span></h1>
+
+    <p>
+      I build software, AI systems, automation and futuristic digital
+      experiences.
+    </p>
+
+    <div class="orb"></div>
+  </section>
+
+  <section id="about">
+    <div class="small">01 / ABOUT</div>
+
+    <h2>BUILD.<br><span class="red">LEARN.</span><br>REPEAT.</h2>
+
+    <p style="max-width:700px;color:#999;line-height:1.8;">
+      Developer focused on learning C++, DSA, web development,
+      AI integration and building real-world projects.
+    </p>
+  </section>
+
+  <section id="skills">
+    <div class="small">02 / SKILLS</div>
+
+    <h2>WHAT I<br><span class="red">BUILD</span></h2>
+
+    <div class="skills">
+      <div class="skill">C++</div>
+      <div class="skill">DSA</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">AI APIs</div>
+      <div class="skill">Voice AI</div>
+      <div class="skill">VAPI</div>
+      <div class="skill">Twilio</div>
+      <div class="skill">REST APIs</div>
+      <div class="skill">Git / GitHub</div>
+      <div class="skill">Vercel</div>
+      <div class="skill">Automation</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="small">03 / PROJECTS</div>
+
+    <h2>SELECTED<br><span class="red">WORK</span></h2>
+
+    <div class="card">
+      <h3>01 — TargetLeads</h3>
+      <p>
+        B2B lead-generation platform focused on clothing retailers,
+        data refinement and automation.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>02 — MUMMY CAFE</h3>
+      <p>
+        Smart restaurant digital menu concept with QR,
+        AI and voice-assistant experiences.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>03 — Number Refine</h3>
+      <p>
+        Raw numbers → Cleaning → Validation → Filtering →
+        Refinement → Usable data.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="small">04 / CONTACT</div>
+
+    <h2>LET'S<br><span class="red">BUILD.</span></h2>
+
+    <p style="color:#999;line-height:1.8;">
+      More projects and experiments coming soon.
+    </p>
+  </section>
+
+  <footer>
+    YASH. — Developer • AI Builder • Problem Solver
+  </footer>
+
+</body>
+  </html>
