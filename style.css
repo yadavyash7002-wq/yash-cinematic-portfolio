@@ -1,7 +1,3 @@
-/* ===============================
-   YASH — CINEMATIC PORTFOLIO
-================================ */
-
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +15,25 @@ body {
   overflow-x: hidden;
 }
 
-/* ================= NAV ================= */
+#three-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 75% 35%, rgba(255, 0, 0, .12), transparent 25%),
+    radial-gradient(circle at 15% 80%, rgba(120, 0, 0, .08), transparent 30%);
+}
 
 nav {
   position: fixed;
@@ -27,14 +41,285 @@ nav {
   left: 0;
   width: 100%;
   height: 75px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
   padding: 0 6%;
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   z-index: 100;
+  background: rgba(0,0,0,.35);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 4px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+}
+
+.nav-links a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  transition: .3s;
+}
+
+.nav-links a:hover {
+  color: #ff2020;
+}
+
+.red {
+  color: #ff2020;
+}
+
+section {
+  min-height: 100vh;
+  padding: 130px 7%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.hero {
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 5;
+  max-width: 800px;
+}
+
+.small,
+.section-number {
+  color: #ff2020;
+  font-size: 11px;
+  letter-spacing: 5px;
+  margin-bottom: 25px;
+}
+
+.hero h1 {
+  font-size: clamp(80px, 15vw, 190px);
+  line-height: .8;
+  letter-spacing: -9px;
+  font-weight: 900;
+}
+
+.hero p {
+  max-width: 600px;
+  margin-top: 40px;
+  color: #999;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 35px;
+}
+
+.button {
+  display: inline-block;
+  padding: 14px 22px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  letter-spacing: 2px;
+  background: #ff2020;
+  border: 1px solid #ff2020;
+  transition: .3s;
+}
+
+.button:hover {
+  background: transparent;
+  box-shadow: 0 0 25px rgba(255,0,0,.3);
+}
+
+.button.outline {
+  background: transparent;
+  border-color: #444;
+}
+
+.button.outline:hover {
+  border-color: #ff2020;
+}
+
+.orb {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  right: 8%;
+  top: 34%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 25%,
+      #ff7777,
+      #9c0000 35%,
+      #300000 65%,
+      #050505 75%);
+  box-shadow:
+    0 0 45px rgba(255,0,0,.75),
+    0 0 130px rgba(255,0,0,.3);
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+h2 {
+  font-size: clamp(48px, 8vw, 105px);
+  line-height: .88;
+  letter-spacing: -5px;
+  margin-bottom: 35px;
+}
+
+.section-text {
+  max-width: 720px;
+  color: #999;
+  line-height: 1.8;
+  font-size: 15px;
+}
+
+.skills,
+.learning-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 950px;
+}
+
+.skill,
+.learning-path span {
+  padding: 13px 18px;
+  background: rgba(12,12,12,.8);
+  border: 1px solid #292929;
+  color: #ccc;
+  font-size: 12px;
+  transition: .3s;
+}
+
+.skill:hover,
+.learning-path span:hover {
+  color: #fff;
+  border-color: #ff2020;
+  box-shadow: 0 0 20px rgba(255,0,0,.15);
+  transform: translateY(-3px);
+}
+
+.project-card {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  gap: 30px;
+  padding: 30px;
+  margin: 10px 0;
+  background: rgba(10,10,10,.78);
+  border: 1px solid #252525;
+  transition: .35s;
+}
+
+.project-card:hover {
+  transform: translateX(12px);
+  border-color: #ff2020;
+  box-shadow: 0 0 35px rgba(255,0,0,.12);
+}
+
+.project-number {
+  color: #ff2020;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.project-card h3 {
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+
+.project-card p {
+  color: #888;
+  line-height: 1.7;
+}
+
+#contact {
+  background:
+    radial-gradient(circle at 70% 50%,
+      rgba(255,0,0,.12),
+      transparent 30%);
+}
+
+footer {
+  min-height: 120px;
+  padding: 40px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #1c1c1c;
+  color: #666;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 700px) {
+
+  nav {
+    height: 65px;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  section {
+    padding: 110px 6%;
+  }
+
+  .hero h1 {
+    font-size: 76px;
+    letter-spacing: -5px;
+  }
+
+  .hero p {
+    max-width: 90%;
+  }
+
+  .orb {
+    width: 150px;
+    height: 150px;
+    right: 7%;
+    top: 25%;
+    opacity: .65;
+  }
+
+  h2 {
+    font-size: 52px;
+    letter-spacing: -3px;
+  }
+
+  .project-card {
+    padding: 22px;
+    gap: 18px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+     }  z-index: 100;
 
   background: rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(14px);
