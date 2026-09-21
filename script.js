@@ -1,40 +1,381 @@
-// ===============================
-// YASH — CINEMATIC PORTFOLIO
-// ===============================
+import * as THREE from "three";
 
-const orb = document.querySelector(".orb");
-const hero = document.querySelector(".hero");
+/* =========================
+   BASIC SETUP
+========================= */
 
-// Mouse movement
-document.addEventListener("mousemove", (event) => {
-  const x = (event.clientX / window.innerWidth - 0.5) * 2;
-  const y = (event.clientY / window.innerHeight - 0.5) * 2;
+const canvas = document.getElementById("three-canvas");
 
-  if (orb) {
-    orb.style.transform =
-      `translate(${x * 18}px, ${y * 18}px)`;
-  }
+const scene = new THREE.Scene();
 
-  document.body.style.setProperty(
-    "--mouse-x",
-    `${event.clientX}px`
-  );
+scene.background = new THREE.Color(0x030303);
 
-  document.body.style.setProperty(
-    "--mouse-y",
-    `${event.clientY}px`
-  );
+const camera = new THREE.PerspectiveCamera(
+  60,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  100
+);
+
+camera.position.set(0, 1.5, 8);
+
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true,
+  alpha: true
 });
 
-// Scroll effect
-window.addEventListener("scroll", () => {
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(
+  Math.min(window.devicePixelRatio, 2)
+);
 
-  const scrollY = window.scrollY;
+renderer.shadowMap.enabled = true;
 
-  if (orb) {
-    const rotation = scrollY * 0.08;
+/* =========================
+   LIGHTS
+========================= */
 
-    orb.style.filter =
+const ambientLight = new THREE.AmbientLight(
+  0xffffff,
+  0.35
+);
+
+scene.add(ambientLight);
+
+const redLight = new THREE.PointLight(
+  0xff1111,
+  18,
+  18
+);
+
+redLight.position.set(3, 3, 3);
+
+scene.add(redLight);
+
+const redLight2 = new THREE.PointLight(
+  0x660000,
+  12,
+  15
+);
+
+redLight2.position.set(-4, 1, -3);
+
+scene.add(redLight2);
+
+/* =========================
+   FLOOR
+========================= */
+
+const floorGeometry =
+  new THREE.PlaneGeometry(30, 30);
+
+const floorMaterial =
+  new THREE.MeshStandardMaterial({
+    color: 0x050505,
+    metalness: 0.8,
+    roughness: 0.35
+  });
+
+const floor =
+  new THREE.Mesh(
+    floorGeometry,
+    floorMaterial
+  );
+
+floor.rotation.x = -Math.PI / 2;
+floor.position.y = -1.5;
+
+floor.receiveShadow = true;
+
+scene.add(floor);
+
+/* =========================
+   GRID
+========================= */
+
+const grid = new THREE.GridHelper(
+  30,
+  30,
+  0x330000,
+  0x160000
+);
+
+grid.position.y = -1.48;
+
+scene.add(grid);
+
+/* =========================
+   FLOATING CUBES
+========================= */
+
+const objects = [];
+
+const cubeGeometry =
+  new THREE.BoxGeometry(
+    0.35,
+    0.35,
+    0.35
+  );
+
+for (let i = 0; i < 45; i++) {
+
+  const material =
+    new THREE.MeshStandardMaterial({
+      color:
+        Math.random() > 0.75
+          ? 0xff2020
+          : 0x222222,
+
+      emissive:
+        Math.random() > 0.75
+          ? 0x550000
+          : 0x000000,
+
+      metalness: 0.8,
+      roughness: 0.3
+    });
+
+  const cube =
+    new THREE.Mesh(
+      cubeGeometry,
+      material
+    );
+
+  cube.position.set(
+    (Math.random() - 0.5) * 16,
+    (Math.random() - 0.5) * 8,
+    (Math.random() - 0.5) * 12
+  );
+
+  cube.rotation.set(
+    Math.random(),
+    Math.random(),
+    Math.random()
+  );
+
+  scene.add(cube);
+
+  objects.push(cube);
+}
+
+/* =========================
+   FUTURISTIC RINGS
+========================= */
+
+const ringGeometry =
+  new THREE.TorusGeometry(
+    2.2,
+    0.025,
+    16,
+    100
+  );
+
+const ringMaterial =
+  new THREE.MeshBasicMaterial({
+    color: 0xff2020
+  });
+
+const ring =
+  new THREE.Mesh(
+    ringGeometry,
+    ringMaterial
+  );
+
+ring.position.set(
+  3,
+  1,
+  -3
+);
+
+ring.rotation.x = Math.PI / 2;
+
+scene.add(ring);
+
+/* =========================
+   PARTICLES
+========================= */
+
+const particleCount = 1200;
+
+const particleGeometry =
+  new THREE.BufferGeometry();
+
+const particlePositions =
+  new Float32Array(
+    particleCount * 3
+  );
+
+for (let i = 0; i < particleCount * 3; i += 3) {
+
+  particlePositions[i] =
+    (Math.random() - 0.5) * 25;
+
+  particlePositions[i + 1] =
+    (Math.random() - 0.5) * 15;
+
+  particlePositions[i + 2] =
+    (Math.random() - 0.5) * 20;
+}
+
+particleGeometry.setAttribute(
+  "position",
+  new THREE.BufferAttribute(
+    particlePositions,
+    3
+  )
+);
+
+const particleMaterial =
+  new THREE.PointsMaterial({
+    color: 0xff3333,
+    size: 0.025,
+    transparent: true,
+    opacity: 0.8
+  });
+
+const particles =
+  new THREE.Points(
+    particleGeometry,
+    particleMaterial
+  );
+
+scene.add(particles);
+
+/* =========================
+   MOUSE MOVEMENT
+========================= */
+
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener(
+  "mousemove",
+  (event) => {
+
+    mouseX =
+      (event.clientX /
+        window.innerWidth -
+        0.5);
+
+    mouseY =
+      (event.clientY /
+        window.innerHeight -
+        0.5);
+
+  }
+);
+
+/* =========================
+   SCROLL CAMERA
+========================= */
+
+let scrollY = 0;
+
+window.addEventListener(
+  "scroll",
+  () => {
+
+    scrollY =
+      window.scrollY /
+      window.innerHeight;
+
+  }
+);
+
+/* =========================
+   ANIMATION
+========================= */
+
+const clock = new THREE.Clock();
+
+function animate() {
+
+  requestAnimationFrame(
+    animate
+  );
+
+  const time =
+    clock.getElapsedTime();
+
+  /* Floating objects */
+
+  objects.forEach(
+    (object, index) => {
+
+      object.rotation.x += 0.002;
+
+      object.rotation.y += 0.003;
+
+      object.position.y +=
+        Math.sin(
+          time + index
+        ) * 0.0008;
+
+    }
+  );
+
+  /* Ring */
+
+  ring.rotation.z =
+    time * 0.25;
+
+  ring.rotation.y =
+    time * 0.15;
+
+  /* Particles */
+
+  particles.rotation.y =
+    time * 0.015;
+
+  /* Camera mouse movement */
+
+  camera.position.x +=
+    (mouseX * 0.8 -
+      camera.position.x) * 0.025;
+
+  camera.position.y +=
+    (1.5 -
+      mouseY * 0.5 -
+      camera.position.y) * 0.025;
+
+  /* Scroll camera */
+
+  camera.position.z =
+    8 - scrollY * 1.2;
+
+  camera.rotation.y =
+    -mouseX * 0.08;
+
+  renderer.render(
+    scene,
+    camera
+  );
+}
+
+animate();
+
+/* =========================
+   RESIZE
+========================= */
+
+window.addEventListener(
+  "resize",
+  () => {
+
+    camera.aspect =
+      window.innerWidth /
+      window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(
+      window.innerWidth,
+      window.innerHeight
+    );
+
+  }
+);    orb.style.filter =
       `brightness(${1 + scrollY * 0.0003})`;
 
     orb.style.transform =
