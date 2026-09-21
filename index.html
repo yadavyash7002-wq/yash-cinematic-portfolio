@@ -1,40 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>YASH — Developer</title>
+  <title>YASH. — Developer • AI Builder</title>
+  <meta
+    name="description"
+    content="YASH. — Developer, AI Builder and Problem Solver."
+  />
 
-  <!-- Three.js -->
+  <!-- THREE.JS -->
   <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
-      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.180.0/examples/jsm/"
+      }
     }
-  }
   </script>
 
-  <link rel="stylesheet" href="style.css">
+  <!-- YOUR CSS -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- ================= NAVIGATION ================= -->
+  <!-- =========================
+       3D BACKGROUND
+  ========================== -->
+
+  <canvas id="three-canvas"></canvas>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
   <nav>
-    <div class="logo">YASH.</div>
+
+    <div class="logo">
+      YASH<span class="red">.</span>
+    </div>
 
     <div class="nav-links">
       <a href="#about">ABOUT</a>
       <a href="#skills">SKILLS</a>
       <a href="#projects">PROJECTS</a>
+      <a href="#ai-lab">AI LAB</a>
+      <a href="#journey">JOURNEY</a>
       <a href="#contact">CONTACT</a>
     </div>
+
   </nav>
 
 
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section class="hero" id="home">
+
+    <div class="hero-content">
+
+      <div class="small">
+        DEVELOPER • AI BUILDER • PROBLEM SOLVER
+      </div>
+
+      <h1>
+        YASH<span class="red">.</span>
+      </h1>
+
+      <p>
+        I build digital systems where
+        software, AI and automation meet.
+      </p>
+
+      <div class="hero-buttons">
+
+        <a href="#projects" class="button">
+          VIEW MY WORK →
+        </a>
+
+        <a href="#about" class="button outline">
+          ABOUT ME
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- 3D scene focal object -->
+    <div class="orb"></div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section id="about">
+
+    <div class="section-number">
+      01 / ABOUT
+    </div>
+
+    <h2>
+      A STUDENT<br>
+      WHO <span class="red">BUILDS.</span>
+    </h2>
+
+    <p class="section-text">
+      I'm Yash, a developer and problem solver focused on
+      learning software development, AI and automation while
+      building real-world digital projects.
+    </p>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================== -->
+
+  <section id="skills">
+
+    <div class="section-number">
+      02 / SKILLS
+    </div>
+
+    <h2>
+      TOOLS I USE<br>
+      TO <span class="red">BUILD.</span>
+    </h2>
+
+    <div class="skills">
+
+      <div class="skill">C++</div>
+      <div class="skill">DSA</div>
+      <div class="skill">JavaScript</div>
+      <div class="skill">AI APIs</div>
+      <div class="skill">Voice AI</div>
+      <div class="skill">VAPI</div>
+      <div class="skill">Twilio</div>
+      <div class="skill">REST APIs</div>
+      <div class="skill">Git / GitHub</div>
+      <div class="skill">Vercel</div>
+      <div class="skill">Automation</div>
+      <div class="skill">Web Development</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================== -->
+
+  <section id="projects">
+
+    <div class="section-number">
+      03 / SELECTED WORK
+    </div>
+
+    <h2>
+      PROJECTS<br>
+      THAT <span class="red">MATTER.</span>
+    </h2>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        01
+      </div>
+
+      <div>
+        <h3>TARGETLEADS</h3>
+
+        <p>
+          B2B lead-generation platform focused on
+          clothing businesses, retailer data and
+          automation workflows.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        02
+      </div>
+
+      <div>
+        <h3>MUMMY CAFE</h3>
+
+        <p>
+          Smart restaurant digital experience concept
+          combining QR menu, ordering, booking and
+          AI / voice-assistant ideas.
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="project-card">
+
+      <div class="project-number">
+        03
+      </div>
+
+      <div>
+        <h3>NUMBER REFINE</h3>
+
+        <p>
+          Raw Numbers → Cleaning → Validation →
+          Filtering → Refinement → Final Usable Data.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       AI LAB
+  ========================== -->
+
+  <section id="ai-lab">
+
+    <div class="section-number">
+      04 / AI LAB
+    </div>
+
+    <h2>
+      BUILDING WITH<br>
+      <span class="red">AI.</span>
+    </h2>
+
+    <p class="section-text">
+      Exploring AI APIs, voice agents, automation,
+      assistants and practical AI-powered products.
+    </p>
+
+    <div class="learning-path">
+
+      <span>AI APIs</span>
+      <span>Gemini</span>
+      <span>Voice AI</span>
+      <span>VAPI</span>
+      <span>Twilio</span>
+      <span>Automation</span>
+      <span>REST APIs</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       JOURNEY
+  ========================== -->
+
+  <section id="journey">
+
+    <div class="section-number">
+      05 / JOURNEY
+    </div>
+
+    <h2>
+      THE<br>
+      <span class="red">PATH.</span>
+    </h2>
+
+    <div class="learning-path">
+
+      <span>C++</span>
+      <span>DSA</span>
+      <span>Git / GitHub</span>
+      <span>SQL</span>
+      <span>Backend</span>
+      <span>Node.js</span>
+      <span>TypeScript</span>
+      <span>PostgreSQL</span>
+      <span>Docker</span>
+      <span>Cloud</span>
+      <span>System Design</span>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section id="contact">
+
+    <div class="section-number">
+      06 / LET'S TALK
+    </div>
+
+    <h2>
+      LET'S<br>
+      <span class="red">BUILD.</span>
+    </h2>
+
+    <p class="section-text">
+      Building, learning and experimenting with
+      software, AI and digital products.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a
+        href="mailto:your-email@example.com"
+        class="button"
+      >
+        EMAIL ME →
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div>
+      YASH<span class="red">.</span>
+    </div>
+
+    <div>
+      BUILD • LEARN • EXECUTE • REPEAT
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       YOUR JAVASCRIPT
+  ========================== -->
+
+  <script type="module" src="script.js"></script>
+
+</body>
+          </html>
   <!-- ================= 3D BACKGROUND ================= -->
 
   <canvas id="three-canvas"></canvas>
